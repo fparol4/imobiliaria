@@ -1,35 +1,24 @@
 const ResponseMessages = require('../../locale/validators/pt-br')
-const Joi = require('@hapi/joi')
+const Yup = require('yup')
 
-module.exports = Joi.object({
-  full_name: Joi
+const validationSchema = Yup.object().shape({
+  first_name: Yup
     .string()
     .required(),
 
-  password: Joi
+  last_name: Yup
     .string()
-    .min(6)
-    .max(18)
-    .label(ResponseMessages.PasswordIsRequired),
+    .required(),
 
-  password_confirmation: Joi
-    .ref('password'),
-
-  email: Joi
+  email: Yup
     .string()
     .email()
-    .label(ResponseMessages.EmailIsRequired),
+    .required(),
 
-  email_confirmation: Joi
-    .ref('email'),
+  password: Yup
+    .string()
+    .min(6)
 
-  status_id: Joi
-    .number()
-    .positive(),
-
-  role_id: Joi
-    .number()
-    .positive()
-}).options({
-  abortEarly: false
 })
+
+module.exports = validationSchema

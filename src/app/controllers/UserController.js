@@ -7,7 +7,7 @@ const UserValidator = require('../validators/UserValidator')
 class UserController {
   async store (req, res) {
     const { body } = req
-    await UserValidator.validateAsync(body)
+    await UserValidator.validate(body, { abortEarly: false })
     return res.json(body)
   }
 }
