@@ -10,7 +10,12 @@ module.exports = {
         type: Sequelize.INTEGER
       },
 
-      full_name: {
+      first_name: {
+        allowNull: false,
+        type: Sequelize.STRING
+      },
+
+      last_name: {
         allowNull: false,
         type: Sequelize.STRING
       },
@@ -37,26 +42,6 @@ module.exports = {
 
       recovery_token_created_at: {
         type: Sequelize.DATE
-      },
-
-      role_id: {
-        type: Sequelize.INTEGER,
-        references: {
-          model: 'roles',
-          key: 'id'
-        },
-        onUpdate: 'CASCADE',
-        onDelete: 'SET NULL'
-      },
-
-      status_id: {
-        type: Sequelize.INTEGER,
-        references: {
-          model: 'status',
-          key: 'id'
-        },
-        onUpdate: 'CASCADE',
-        onDelete: 'SET NULL'
       },
 
       created_at: {
