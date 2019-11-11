@@ -30,4 +30,6 @@ module.exports = Joi.object({
   role_id: Joi
     .number()
     .positive()
+}).options({
+  abortEarly: false
 })
