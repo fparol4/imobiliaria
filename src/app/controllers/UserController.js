@@ -1,5 +1,5 @@
 /** Models */
-// const { User } = require('../models')
+const { User } = require('../models')
 
 /** Validator */
 const UserValidator = require('../validators/UserValidator')

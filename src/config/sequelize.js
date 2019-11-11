@@ -1,5 +1,5 @@
 const path = require('path')
-require('dotenv').config({ path: require(path.resolve(__dirname, '..', '..', 'env'))(process.env.NODE_ENV) })
+require(path.resolve(__dirname, '..', '..', 'env'))
 
 module.exports = {
   username: process.env.DATABASE_USER,

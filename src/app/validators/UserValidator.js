@@ -1,4 +1,4 @@
-const ResponseMessages = require('../../locale/pt-br')
+const ResponseMessages = require('../../locale/validators/pt-br')
 const Joi = require('@hapi/joi')
 
 module.exports = Joi.object({
