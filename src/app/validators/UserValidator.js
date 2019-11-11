@@ -21,4 +21,13 @@ const validationSchema = Yup.object().shape({
 
 })
 
-module.exports = validationSchema
+module.exports = async (req, res, next) => {
+  const body = req.body
+
+  /** @abortEarly Pega todos os erros de validação para throw */
+  await validationSchema.validate(body, { abortEarly: false })
+
+  /** @stripUnknown Remove todos os fields enviados e desconhecidos */
+  req.body = validationSchema.cast(body, { stripUnknown: true })
+  next()
+}

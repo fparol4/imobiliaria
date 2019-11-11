@@ -5,5 +5,6 @@ module.exports = (err, req, res, next) => {
     const { errors } = err
     return ResponseHttpFactory.genericExceptionResponse(res, 400, err.name, errors)
   }
+  console.log(err)
   return ResponseHttpFactory.genericExceptionResponse(res, 500, err.name)
 }
