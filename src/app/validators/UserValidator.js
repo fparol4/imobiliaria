@@ -1,23 +1,24 @@
-const ResponseMessages = require('../../locale/validators/pt-br')
+const ResponseMessages = require('../../locale/validators')
 const Yup = require('yup')
 
 const validationSchema = Yup.object().shape({
   first_name: Yup
     .string()
-    .required(),
+    .required(ResponseMessages.FirstNameRequired),
 
   last_name: Yup
     .string()
-    .required(),
+    .required(ResponseMessages.LastNameRequired),
 
   email: Yup
     .string()
-    .email()
-    .required(),
+    .email(ResponseMessages.EmailFormatInvalid)
+    .required(ResponseMessages.EmailRequired),
 
   password: Yup
     .string()
-    .min(6)
+    .min(6, ResponseMessages.PasswordMin)
+    .required(ResponseMessages.PasswordRequired)
 
 })
 
