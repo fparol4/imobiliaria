@@ -7,6 +7,10 @@ const JWTConfig = require('../../config/jwt')
 /** Models */
 const { User } = require('../models')
 
+/** Exceptions */
+const UserCouldNotBeFound = require('../exceptions/UserException')
+const AuthenticationException = require('../exceptions/AuthenticationException')
+
 class AuthenticationService {
   static async generateToken (data) {
     return jwt.sign(data, JWTConfig.SECRET, { expiresIn: JWTConfig.TIME })
@@ -15,8 +19,14 @@ class AuthenticationService {
   static async auth ({ email, password }) {
     const user = await User.findOne({ where: { email } })
 
-    if (!(await user.comparePassword(password))) {
-      throw new Error('JWT Authentication failed')
+    if (!user) {
+      throw new UserCouldNotBeFound()
+    }
+
+    const passwordCompare = await user.comparePassword(password)
+
+    if (!passwordCompare) {
+      throw new AuthenticationException('Password sent does not match')
     }
 
     return this.generateToken({ id: user.id })

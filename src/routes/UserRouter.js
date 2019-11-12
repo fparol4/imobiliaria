@@ -14,5 +14,6 @@ router.post('', UserValidator.store, UserController.store)
 /** Authenticated */
 router.use(AuthMiddleware)
 router.get('/:id', UserController.show)
+router.put('/:id', UserValidator.update, UserController.update)
 
 module.exports = router

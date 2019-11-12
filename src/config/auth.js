@@ -2,6 +2,7 @@ const AccessControl = new (require('accesscontrol'))()
 
 AccessControl.grant('user')
   .readOwn('user', ['*', '!password_hash'])
+  .updateOwn('user', ['*', '!role_id'])
   .readAny('home')
 
 AccessControl.grant('dealer')
@@ -14,6 +15,7 @@ AccessControl.grant('manager')
 AccessControl.grant('admin')
   .extend('manager')
   .readAny('user', ['*'])
+  .updateAny('user')
   .lock()
 
 module.exports = AccessControl

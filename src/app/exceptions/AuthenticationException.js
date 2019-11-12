@@ -6,4 +6,22 @@ class AuthenticationException extends Error {
   }
 }
 
+class TokenNotProvidedException extends Error {
+  constructor (message = 'The required token was not sent') {
+    super(message)
+    this.name = 'AuthenticationError'
+    this.status = 401
+  }
+}
+
+class TokenException extends Error {
+  constructor (message = 'The required token was not sent') {
+    super(message)
+    this.name = 'AuthenticationError'
+    this.status = 401
+  }
+}
+
 module.exports = AuthenticationException
+module.exports.TokenNotProvidedException = TokenNotProvidedException
+module.exports.TokenException = TokenException
