@@ -1,8 +1,4 @@
 const bcrypt = require('bcryptjs')
-const jwt = require('jsonwebtoken')
-
-/** Configurations */
-const JWTConfig = require('../../config/jwt')
 
 /** Utils */
 const Utils = require('../utils')
@@ -17,14 +13,14 @@ module.exports = (sequelize, DataTypes) => {
         return `${this.getDataValue('first_name')} ${this.getDataValue('last_name')}`
       }
     },
-    type: {
-      type: DataTypes.STRING,
-      defaultValue: true
-    },
     email: DataTypes.STRING,
     password: DataTypes.VIRTUAL,
     password_hash: DataTypes.STRING
   })
+
+  User.associate = function (models) {
+    User.belongsTo(models.UserRole, { foreignKey: 'role_id', as: 'role' })
+  }
 
   User.addHook('beforeSave', async user => {
     if (user.password) {
@@ -32,19 +28,12 @@ module.exports = (sequelize, DataTypes) => {
     }
   })
 
-  User.prototype.visible = function () {
-    return Utils.hideAttributes(this.dataValues, ['id', 'first_name', 'last_name', 'full_name', 'email'])
+  User.prototype.visible = function (visibleAttributes = ['id', 'first_name', 'last_name', 'full_name', 'email']) {
+    return Utils.hideAttributes(this.dataValues, visibleAttributes)
   }
 
-  User.auth = async function ({ email, password }) {
-    const user = await User.findOne({ where: { email } })
-    const auth = await bcrypt.compare(password, user.password_hash)
-    if (!auth) { throw new Error('JWT Authentication failed') }
-    return this.generateToken(user)
-  }
-
-  User.generateToken = async function ({ id }) {
-    return jwt.sign({ id }, JWTConfig.SECRET, { expiresIn: JWTConfig.TIME })
+  User.prototype.comparePassword = function (password) {
+    return bcrypt.compare(password, this.password_hash)
   }
 
   return User

@@ -10,6 +10,18 @@ module.exports = {
         type: Sequelize.INTEGER
       },
 
+      role_id: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'user_roles',
+          key: 'id'
+        },
+        onUpdate: 'CASCADE',
+        onDelete: 'SET NULL',
+        defaultValue: 1
+      },
+
       first_name: {
         allowNull: false,
         type: Sequelize.STRING
@@ -29,12 +41,6 @@ module.exports = {
       password_hash: {
         allowNull: false,
         type: Sequelize.STRING
-      },
-
-      type: {
-        allowNull: false,
-        type: Sequelize.STRING,
-        defaultValue: 'user'
       },
 
       recovery_token: {

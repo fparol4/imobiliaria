@@ -18,7 +18,8 @@ class UserController {
 
   async show (req, res) {
     const { id } = req.params
-    const requestUserPermissions = AccessControl.can('manager')
+    console.log(req.user.role.role_name)
+    const requestUserPermissions = AccessControl.can(req.user.role.role_name)
 
     if (id === String(req.user.id)) {
       return ResponseHttpFactory.genericResponse(res, 200, 'User find with success', req.user.visible())
@@ -29,6 +30,11 @@ class UserController {
     }
 
     const user = await User.findByPk(id)
+
+    if (!user) {
+      return ResponseHttpFactory.genericResponse(res, 200, 'User not found', {})
+    }
+
     return ResponseHttpFactory.genericResponse(res, 200, 'User find with success', user.visible())
   }
 }
