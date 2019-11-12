@@ -1,5 +1,5 @@
 const path = require('path')
-require('dotenv').config({ path: require(path.resolve(__dirname, '..', '..', 'env'))(process.env.NODE_ENV) })
+require(path.resolve(__dirname, '..', '..', 'env'))
 
 module.exports = {
   username: process.env.DATABASE_USER,
@@ -8,8 +8,7 @@ module.exports = {
   host: process.env.DATABASE_HOST,
   port: process.env.DATABASE_PORT,
   dialect: process.env.DATABASE_DIALECT,
-  operatorsAliases: false,
-  logging: process.env.NODE_ENV !== 'production',
+  logging: false, // process.env.NODE_ENV !== 'production',
   define: {
     underscored: true,
     underscoredAll: true,

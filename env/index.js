@@ -1,12 +1,13 @@
 const path = require('path')
 
-const defaultEnv = (actualEnviroment) => {
-  switch (actualEnviroment) {
-    case 'production':
-      return path.resolve(__dirname, '.env.production')
-    default:
-      return path.resolve(__dirname, '.env.development')
-  }
+const enviroments = {
+  production: '.env.production',
+  development: '.env.development'
 }
 
-module.exports = enviroment => defaultEnv(enviroment)
+require('dotenv').config({
+  path: path.resolve(
+    __dirname,
+    enviroments[process.env.NODE_ENV] || '.env.development'
+  )
+})

@@ -2,14 +2,6 @@ const ResponseMessages = require('../../locale/validators')
 const Yup = require('yup')
 
 const storeSchema = Yup.object().shape({
-  first_name: Yup
-    .string()
-    .required(ResponseMessages.FirstNameRequired),
-
-  last_name: Yup
-    .string()
-    .required(ResponseMessages.LastNameRequired),
-
   email: Yup
     .string()
     .email(ResponseMessages.EmailFormatInvalid)
@@ -17,7 +9,6 @@ const storeSchema = Yup.object().shape({
 
   password: Yup
     .string()
-    .min(6, ResponseMessages.PasswordMin)
     .required(ResponseMessages.PasswordRequired)
 
 })
