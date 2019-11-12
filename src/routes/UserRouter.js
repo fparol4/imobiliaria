@@ -6,10 +6,13 @@ const UserController = require('../app/controllers/UserController')
 /** Validators */
 const UserValidator = require('../app/validators/UserValidator')
 
-// router.get('', UserController.index)
-router.post('', UserValidator, UserController.store)
-// router.get('/:id', UserController.show)
-// router.put('/:id', UserController.update)
-// router.delete('/:id', UserController.destroy)
+/** Middlewares */
+const AuthMiddleware = require('../app/middlewares/Auth')
+
+router.post('', UserValidator.store, UserController.store)
+
+/** Authenticated */
+router.use(AuthMiddleware)
+router.get('/:id', UserController.show)
 
 module.exports = router

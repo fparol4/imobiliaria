@@ -9,7 +9,7 @@ const helmet = require('helmet')
 require('express-async-errors')
 
 class App {
-  constructor() {
+  constructor () {
     this.app = express()
     this.middlewares()
     this.routes()
@@ -35,7 +35,7 @@ class App {
           'src',
           'app',
           'middlewares',
-          'exceptions'
+          'ExceptionHandler'
         ))
     )
   }
