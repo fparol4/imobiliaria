@@ -24,6 +24,8 @@ class Router {
     this.router.route('/', RootRouter)
     this.router.use('/sessions', SessionRouter)
     this.router.use('/users', UserRouter)
+
+    this.router.get('/random', (req, res) => res.json())
   }
 }
 

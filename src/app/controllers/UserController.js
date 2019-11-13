@@ -13,7 +13,7 @@ class UserController {
   async store (req, res) {
     const { body } = req
     const user = await User.create(body)
-    return ResponseHttpFactory.genericResponse(res, 201, 'User created with success', user.visible())
+    return ResponseHttpFactory.genericResponse(res, 201, 'User created with success', { user: user.visible() })
   }
 
   async show (req, res) {
@@ -23,7 +23,7 @@ class UserController {
     const requestUserPermissions = AccessControl.can(requestUserRole)
 
     if (id === String(req.user.id)) {
-      return ResponseHttpFactory.genericResponse(res, 200, 'User find with success', req.user.visible())
+      return ResponseHttpFactory.genericResponse(res, 200, 'User find with success', { user: req.user.visible() })
     }
 
     if (!requestUserPermissions.readAny('user').granted) {
@@ -36,7 +36,7 @@ class UserController {
       return ResponseHttpFactory.genericResponse(res, 200, 'User not found', {})
     }
 
-    return ResponseHttpFactory.genericResponse(res, 200, 'User find with success', user.visible())
+    return ResponseHttpFactory.genericResponse(res, 200, 'User find with success', { user: user.visible() })
   }
 
   async update (req, res) {
@@ -53,7 +53,7 @@ class UserController {
       }
 
       const updatedUser = await requestUser.update(body)
-      return ResponseHttpFactory.genericResponse(res, 200, 'User find with success', updatedUser.visible())
+      return ResponseHttpFactory.genericResponse(res, 200, 'User find with success', { user: updatedUser.visible() })
     }
 
     if (!requestUserPermissions.updateAny('user').granted) {
@@ -67,7 +67,7 @@ class UserController {
     }
 
     const updatedUser = await user.update(body)
-    return ResponseHttpFactory.genericResponse(res, 200, 'User find with success', updatedUser.visible())
+    return ResponseHttpFactory.genericResponse(res, 200, 'User find with success', { user: updatedUser.visible() })
   }
 }
 

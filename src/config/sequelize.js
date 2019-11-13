@@ -8,6 +8,7 @@ module.exports = {
   host: process.env.DATABASE_HOST,
   port: process.env.DATABASE_PORT,
   dialect: process.env.DATABASE_DIALECT,
+  storage: process.env.DATABASE_PATH, // Configuração para ambiente de testes
   logging: false, // process.env.NODE_ENV !== 'production',
   define: {
     underscored: true,
