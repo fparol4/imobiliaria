@@ -15,7 +15,7 @@ class TokenNotProvidedException extends Error {
 }
 
 class TokenException extends Error {
-  constructor (message = 'The required token was not sent') {
+  constructor (message = 'The required token is invalid') {
     super(message)
     this.name = 'AuthenticationError'
     this.status = 401
