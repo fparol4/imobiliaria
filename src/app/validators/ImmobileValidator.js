@@ -36,8 +36,7 @@ const validators = {
 
     condominium: Yup
       .number()
-      .positive()
-      .required(),
+      .positive(),
 
     neighbourhood: Yup
       .string()

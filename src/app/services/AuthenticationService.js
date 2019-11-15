@@ -1,5 +1,6 @@
 const jwt = require('jsonwebtoken')
 const { promisify } = require('util')
+const AuthenticationControl = require('../../config/auth')
 
 /** Configurations */
 const JWTConfig = require('../../config/jwt')
@@ -36,6 +37,13 @@ class AuthenticationService {
     const [, token] = authorization.split(' ')
     const { id: userId } = await promisify(jwt.verify)(token, process.env.JWT_SECRET)
     return User.findByPk(userId, { include: 'role' })
+  }
+
+  static userPermissions (user) {
+    if (!user || !user.role.role_name) {
+      throw new AuthenticationException()
+    }
+    return AuthenticationControl.can(user.role.role_name)
   }
 }
 
