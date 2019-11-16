@@ -25,6 +25,12 @@ const validators = {
       .integer()
       .required(),
 
+    toilets: Yup
+      .number()
+      .positive()
+      .integer()
+      .required(),
+
     animals: Yup
       .boolean()
       .required(),

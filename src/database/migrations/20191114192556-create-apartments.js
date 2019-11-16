@@ -2,7 +2,7 @@
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('immobiles', {
+    return queryInterface.createTable('properties', {
       id: {
         allowNull: false,
         primaryKey: true,
@@ -27,6 +27,11 @@ module.exports = {
       },
 
       dorms: {
+        allowNull: false,
+        type: Sequelize.INTEGER
+      },
+
+      toilets: {
         allowNull: false,
         type: Sequelize.INTEGER
       },
@@ -79,7 +84,7 @@ module.exports = {
 
       garages: {
         allowNull: false,
-        type: Sequelize.STRING,
+        type: Sequelize.INTEGER,
         defaultValue: 0
       },
 
@@ -109,6 +114,6 @@ module.exports = {
   },
 
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('immobiles')
+    return queryInterface.dropTable('properties')
   }
 }

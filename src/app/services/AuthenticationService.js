@@ -13,11 +13,11 @@ const UserCouldNotBeFound = require('../exceptions/UserException')
 const AuthenticationException = require('../exceptions/AuthenticationException')
 
 class AuthenticationService {
-  static async generateToken (data) {
+  async generateToken (data) {
     return jwt.sign(data, JWTConfig.SECRET, { expiresIn: JWTConfig.TIME })
   }
 
-  static async auth ({ email, password }) {
+  async auth ({ email, password }) {
     const user = await User.findOne({ where: { email } })
 
     if (!user) {
@@ -33,18 +33,19 @@ class AuthenticationService {
     return this.generateToken({ id: user.id })
   }
 
-  static async authToken (authorization) {
+  async authToken (authorization) {
     const [, token] = authorization.split(' ')
     const { id: userId } = await promisify(jwt.verify)(token, process.env.JWT_SECRET)
     return User.findByPk(userId, { include: 'role' })
   }
 
-  static userPermissions (user) {
+  userPermissions (user) {
     if (!user || !user.role.role_name) {
       throw new AuthenticationException()
     }
+
     return AuthenticationControl.can(user.role.role_name)
   }
 }
 
-module.exports = AuthenticationService
+module.exports = new AuthenticationService()

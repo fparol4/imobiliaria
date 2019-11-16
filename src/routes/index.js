@@ -2,7 +2,7 @@
 const RootRouter = require('./RootRouter')
 const UserRouter = require('./UserRouter')
 const SessionRouter = require('./SessionRouter')
-const ImmobileRouter = require('./ImmobileRouter')
+const PropertyRouter = require('./PropertyRouter')
 
 /** Middlewares */
 const AuthMiddleware = require('../app/middlewares/Auth')
@@ -17,7 +17,7 @@ class Router {
     this.router.route('/', RootRouter)
     this.router.use('/users', UserRouter)
     this.router.use('/sessions', SessionRouter)
-    this.router.use('/apartments', ImmobileRouter)
+    this.router.use('/properties', PropertyRouter)
   }
 }
 
