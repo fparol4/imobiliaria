@@ -34,7 +34,7 @@ class UserController {
     const user = await User.findByPk(userId)
 
     if (!user) {
-      return ResponseHttpFactory.genericResponse(res, 200, 'User not found', {})
+      return ResponseHttpFactory.genericResponse(res, 200, 'User not found')
     }
 
     return ResponseHttpFactory.genericResponse(res, 200, 'User find with success', user.visible())
@@ -62,7 +62,7 @@ class UserController {
     const user = await User.findByPk(userId)
 
     if (!user) {
-      return ResponseHttpFactory.genericResponse(res, 200, 'User not found', {})
+      return ResponseHttpFactory.genericResponse(res, 200, 'User not found')
     }
 
     const updatedUser = await user.update(requestBody)
@@ -70,7 +70,7 @@ class UserController {
   }
 
   async index (req, res) {
-    res.json(await User.findAll())
+    res.json(await User.findAll({ include: ['role'] }))
   }
 }
 
