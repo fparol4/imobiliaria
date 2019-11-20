@@ -1,6 +1,6 @@
 const Moment = require('moment')
 
-const manageProperties = (properties) => {
+exports.manageProperties = (properties) => {
   return properties.reduce((prev, curr) => {
     /**
      * Pega todas as propriedades e ordena elas por promocao, novas e restante
@@ -17,5 +17,3 @@ const manageProperties = (properties) => {
     return prev
   }, { promotions: [], new: [], remaining: [] })
 }
-
-module.exports = { manageProperties }
