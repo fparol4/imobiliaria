@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../_layout/imports/meta-tags'); %>
+    <%- include('../_layout/imports/header-imports'); %>
+    <link rel="stylesheet" href="/css/datatables.min.css">
+    <title>Imobiliária | Aliance</title>
+</head>
+
+<body>
+    <%- include('../components/navbar', { black: true }) %>
+    <div class="container uk-margin-top">
+        <%- include('../components/table-houses') %>
+    </div>
+    <%- include('../components/footer') %>
+</body>
+<%- include('../_layout/imports/footer-imports'); %>
+<script src="/js/datatables.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#example').DataTable({
+            "language": {
+                "sEmptyTable": "Nenhum registro encontrado",
+                "sInfo": "Mostrando de _START_ até _END_ de _TOTAL_ registros",
+                "sInfoEmpty": "Mostrando 0 até 0 de 0 registros",
+                "sInfoFiltered": "(Filtrados de _MAX_ registros)",
+                "sInfoPostFix": "",
+                "sInfoThousands": ".",
+                "sLengthMenu": "_MENU_ resultados por página",
+                "sLoadingRecords": "Carregando...",
+                "sProcessing": "Processando...",
+                "sZeroRecords": "Nenhum registro encontrado",
+                "sSearch": "Pesquisar",
+                "oPaginate": {
+                    "sNext": "Próximo",
+                    "sPrevious": "Anterior",
+                    "sFirst": "Primeiro",
+                    "sLast": "Último"
+                },
+                "oAria": {
+                    "sSortAscending": ": Ordenar colunas de forma ascendente",
+                    "sSortDescending": ": Ordenar colunas de forma descendente"
+                },
+                "select": {
+                    "rows": {
+                        "_": "Selecionado %d linhas",
+                        "0": "Nenhuma linha selecionada",
+                        "1": "Selecionado 1 linha"
+                    }
+                }
+            }
+        });
+    });
+</script>
+
+</html>

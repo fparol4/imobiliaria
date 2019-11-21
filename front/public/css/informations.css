@@ -1,0 +1,68 @@
+.uk-card.uk-card-default {
+  margin-bottom: 20px;
+}
+
+.tipo {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  height: 50px;
+  position: relative;
+}
+
+.tipo > span.uk-label.uk-locacao,
+.tipo > span.uk-label.uk-valor {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tipo > span.uk-label.uk-valor > label > h3 {
+  color: white;
+  margin-top: 20px;
+}
+
+.uk-locacao {
+  background-color: transparent;
+}
+
+.uk-valor {
+  background-color: var(--success);
+}
+
+.quill-mg-t {
+  margin-top: 53px;
+}
+
+.uk-textarea:disabled {
+  background-color: #ffffff;
+  color: #999;
+  border-radius: 5px;
+  border-color: #e0e0e0;
+  padding: 13px;
+  font-size: 11pt;
+}
+
+.em-casa {
+  color: #ae5f9d;
+}
+
+.ql-toolbar.ql-snow{
+      background-color: #f9f9f9;
+      border: 1px solid #e2e2e2;
+      border-radius: 6px 6px 0px 0px;
+}
+
+.ql-container.ql-snow {
+      border: 1px solid #e2e2e2;
+      height: 460px;
+      border-radius: 0px 0px 6px 6px;
+}
+
+
+@media (max-width: 1199.98px) {
+  .tipo > span.uk-label.uk-valor {
+    right: -45px;
+  }
+}

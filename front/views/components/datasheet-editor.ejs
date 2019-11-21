@@ -1,0 +1,188 @@
+<div class="uk-card uk-card-default uk-card-body row">
+    <div class="col-md-24">
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="uk-card-title">Ficha Técnica</h3>
+            </div>
+            <div class="col-md-12 uk-flex-end">
+                <div class="uk-margin-right">
+                    <button class="uk-button uk-button-primary uk-button-success">SALVAR</button>
+                </div>
+                <div>
+                    <button class="uk-button uk-button-danger">CANCELAR</button>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div>
+                <div class="ficha-tecnica">
+                    <div class="itens">
+                        <i class="material-icons">
+                            open_with
+                        </i>
+                        <strong>Área Útil</strong>
+                        <p>
+                            <input class="uk-input uk-width-2-3" type="text" name="metragem" id="metragem">
+                            m<sup>2</sup>
+                        </p>
+                    </div>
+                    <div class="itens">
+                        <i class="material-icons">
+                            single_bed
+                        </i>
+                        <strong>Dormitórios</strong>
+                        <p>
+                            <input class="uk-input uk-width-2-3" type="text" name="dormitorios" id="dormitorios">
+                        </p>
+                    </div>
+                    <div class="itens">
+                        <i class="material-icons">
+                            group
+                        </i>
+                        <strong>Sala</strong>
+                        <p>
+                            <input class="uk-input uk-width-2-3" type="text" name="sala" id="sala">
+                        </p>
+                    </div>
+                    <div class="itens">
+                        <i class="material-icons">
+                            bathtub
+                        </i>
+                        <strong>Banheiros</strong>
+                        <p>
+                            <input class="uk-input uk-width-2-3" type="text" name="banheiros" id="banheiros">
+                        </p>
+                    </div>
+                    <div class="itens select">
+                        <i class="material-icons">
+                            pets
+                        </i>
+                        <strong>Animais</strong>
+                        <p>
+                            <select class="uk-select">
+                                <option value="sim">Sim</option>
+                                <option value="nao">Não</option>
+                            </select>
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-10 card-tecnica">
+                        <h3 class="col-md-12 "><em class="em-casa">Mensal</em></h3>
+                        <div class="uk-card-valores">
+                            <div class="itens">
+                                <div>
+                                    <strong>Codigo: </strong>
+                                </div>
+                                <p>
+                                    11JH4HG51O231OY41
+                                </p>
+                            </div>
+                            <div class="itens">
+                                <div>
+                                    <i class="material-icons">
+                                        favorite
+                                    </i>
+                                    <strong>Apelido: </strong>
+                                </div>
+                                <p>
+                                    <input class="uk-input uk-width-2-3" type="text" name="apelido" id="apelido">
+                                </p>
+                            </div>
+                            <div class="itens">
+                                <div>
+                                    <i class="material-icons">
+                                        home
+                                    </i>
+                                    <strong>Locação: </strong>
+                                </div>
+                                <p>
+                                    <input class="uk-input uk-width-2-3" type="text" data-affixes-stay="true"
+                                        data-prefix="R$ " data-thousands="." data-decimal="," name="locacao"
+                                        id="locacao">
+                                </p>
+                            </div>
+                            <div class="itens">
+                                <div>
+                                    <i class="material-icons">
+                                        monetization_on
+                                    </i>
+                                    <strong>IPTU: </strong>
+                                </div>
+                                <p>
+                                    <input class="uk-input uk-width-2-3" type="text" data-affixes-stay="true"
+                                        data-prefix="R$ " data-thousands="." data-decimal="," name="iptu" id="iptu">
+                                </p>
+                            </div>
+                            <div class="itens">
+                                <div>
+                                    <i class="material-icons">
+                                        pool
+                                    </i>
+                                    <strong>Condominio: </strong>
+                                </div>
+                                <p>
+                                    <input class="uk-input uk-width-2-3" type="text" data-affixes-stay="true"
+                                        data-prefix="R$ " data-thousands="." data-decimal="," name="condominio"
+                                        id="condominio">
+                                </p>
+                            </div>
+                            <div class="itens">
+                                <div>
+                                    <i class="material-icons">
+                                        location_searching
+                                    </i>
+                                    <strong>Cep: </strong>
+                                </div>
+                                <p>
+                                    <input class="uk-input uk-width-2-3" type="text" data-mask="99999-999" name="cep"
+                                        id="cep">
+
+                                </p>
+                            </div>
+                            <div class="itens">
+                                <div>
+                                    <i class="material-icons">
+                                        near_me
+                                    </i>
+                                    <strong>Cidade: </strong>
+                                </div>
+                                <p>
+                                    <input class="uk-input uk-width-2-3" type="text" name="cidade" disabled id="cidade">
+
+                                </p>
+                            </div>
+                            <div class="itens">
+                                <div>
+                                    <i class="material-icons">
+                                        room
+                                    </i>
+                                    <strong>Bairro: </strong>
+                                </div>
+                                <p>
+                                    <input class="uk-input uk-width-2-3" type="text" name="bairro" disabled id="bairro">
+                                </p>
+                            </div>
+
+                            <div class="tipo mg-top-5">
+                                <span class="uk-label uk-label-success uk-valor">
+                                    <label>
+                                        <input id="total-money" type="hidden" />
+                                        <h3 id="total">R$ 0,00</h3>
+                                    </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-14 texto card-tecnica">
+                        <h3><em class="em-casa">Histórico</em></h3>
+                        <div class="form-control quill-mg-t ">
+                            <%- include('../components/editor.ejs') %>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

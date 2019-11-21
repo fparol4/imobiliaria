@@ -1,0 +1,59 @@
+<% if (black) { %>
+<a class="uk-navbar-item uk-logo uk-menu-no-responsive" href="#"><img src="/images/logo-named-black.png" class="ext"
+        alt="Logo Preto"> </a>
+<% } else { %>
+
+<a class="uk-navbar-item uk-logo uk-menu-no-responsive" href="#"><img src="/images/logo-named-white.png" class="ext"
+        alt="Logo Branco"> </a>
+<% } %>
+<nav class="uk-navbar-container uk-navbar-container-responsive" uk-navbar>
+    <a class="uk-navbar-item uk-logo uk-menu-responsive" href="#"><img src="/images/logo-named-black.png" class="ext-2"
+            alt="Logo Branco"> </a>
+    <div class="uk-navbar-left uk-menu-no-responsive">
+        <ul class="uk-navbar-nav">
+            <li class="uk-active"><a href="/">Home</a></li>
+            <li><a href="#">Quem Somos</a></li>
+            <li> <a href="#">Duvidas</a>
+                <div class="uk-navbar-dropdown">
+                    <ul class="uk-nav uk-navbar-dropdown-nav">
+                        <li><a href="#">Como Alugar?</a></li>
+                        <li><a href="#">Fiador?</a></li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="uk-navbar-right uk-menu-no-responsive">
+        <ul class="uk-navbar-nav">
+            <li><button id="administracao" data-href="/login" class="uk-button uk-button-primary uk-btn-round"><i
+                        class="material-icons icon-set-16">input</i>
+                    Administração</button></li>
+        </ul>
+    </div>
+
+    <div class="uk-navbar-right uk-menu-responsive">
+        <ul class="uk-navbar-nav">
+            <li class="uk-active"> <a href="#"><i class="material-icons icon-set-16"
+                        style="font-size: 22pt">menu</i></a>
+                <div class="uk-navbar-dropdown">
+                    <ul class="uk-nav uk-navbar-dropdown-nav">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Quem Somos</a></li>
+                        <li> <a href="#">Duvidas</a>
+                            <div class="uk-navbar-dropdown">
+                                <ul class="uk-nav uk-navbar-dropdown-nav">
+                                    <li><a href="#">Como Alugar?</a></li>
+                                    <li><a href="#">Fiador?</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="hr-top">
+                            <hr />
+                            <button class="uk-button uk-button-primary uk-btn-round" style="font-size: 8pt"><i
+                                    class="material-icons icon-set-16">input</i> Administração</button></li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>

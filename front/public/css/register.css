@@ -1,0 +1,46 @@
+html {
+  background: url("../images/bg1.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.purple {
+  position: relative;
+  top: 70px;
+  height: auto;
+  margin-bottom: 50px;
+}
+
+.purple > .logo {
+  background-image: url("../images/logo-bg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* background-position: 0px 0px; */
+  background-position: center;
+}
+
+.logo {
+  width: 150px;
+  background-color: white;
+  position: relative;
+  bottom: 50px;
+  z-index: 1;
+  padding: 20px;
+  border-radius: 100%;
+  height: 150px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.logo > img {
+  margin-top: 30px;
+}
+
+.max-heigth {
+  margin: 60px 0px;
+}
+
+.medium-heigth {
+  margin: 30px 0px;
+}
