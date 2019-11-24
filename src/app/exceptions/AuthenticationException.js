@@ -22,6 +22,4 @@ class TokenException extends Error {
   }
 }
 
-module.exports = AuthenticationException
-module.exports.TokenNotProvidedException = TokenNotProvidedException
-module.exports.TokenException = TokenException
+module.exports = { AuthenticationException, TokenNotProvidedException, TokenException }

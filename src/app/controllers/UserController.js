@@ -5,7 +5,7 @@ const { User } = require('../models')
 const ResponseHttpFactory = require('../factory/ResponseHttpFactory')
 
 /** Exceptions */
-const AuthenticationException = require('../exceptions/AuthenticationException')
+const { AuthenticationException } = require('../exceptions/AuthenticationException')
 
 /** Services */
 const AuthenticationService = require('../services/AuthenticationService')

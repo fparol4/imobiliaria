@@ -9,8 +9,8 @@ const JWTConfig = require('../../config/jwt')
 const { User } = require('../models')
 
 /** Exceptions */
-const UserCouldNotBeFound = require('../exceptions/UserException')
-const AuthenticationException = require('../exceptions/AuthenticationException')
+const { UserCouldNotBeFound } = require('../exceptions/UserException')
+const { AuthenticationException } = require('../exceptions/AuthenticationException')
 
 class AuthenticationService {
   async generateToken (data) {

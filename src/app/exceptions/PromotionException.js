@@ -22,6 +22,4 @@ class PromotionDateException extends Error {
   }
 }
 
-module.exports = PromotionException
-module.exports.PromotionValueException = PromotionValueException
-module.exports.PromotionDateException = PromotionDateException
+module.exports = { PromotionException, PromotionValueException, PromotionDateException }

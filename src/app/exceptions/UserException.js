@@ -6,4 +6,4 @@ class UserCouldNotBeFound extends Error {
   }
 }
 
-module.exports = UserCouldNotBeFound
+module.exports = { UserCouldNotBeFound }

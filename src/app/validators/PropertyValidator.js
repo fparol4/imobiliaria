@@ -3,11 +3,6 @@ const Yup = require('yup')
 
 const validators = {
   store: Yup.object().shape({
-    owner_id: Yup
-      .number()
-      .positive()
-      .integer()
-      .required(),
 
     value: Yup
       .number()
@@ -84,7 +79,7 @@ const validators = {
 
 module.exports = (validator = 'store') => {
   return async (req, res, next) => {
-    const body = req.body
+    const body = JSON.parse(JSON.stringify(req.body))
 
     /** @abortEarly Pega todos os erros de validação para throw */
     await validators[validator].validate(body, { abortEarly: false })

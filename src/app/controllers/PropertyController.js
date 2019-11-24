@@ -1,10 +1,15 @@
 const { Op, Sequelize } = require('sequelize')
+const fs = require('fs')
+const { promisify } = require('util')
+
+const asyncRemoveFile = promisify(fs.unlink)
 
 /** Models */
-const { Property } = require('../models')
+const { Property, File } = require('../models')
 
 /** Exceptions */
-const AuthenticationException = require('../exceptions/AuthenticationException')
+const { AuthenticationException } = require('../exceptions/AuthenticationException')
+const ValidationException = require('../exceptions/ValidationException')
 
 /** Services */
 const AuthenticationService = require('../services/AuthenticationService')
@@ -17,15 +22,39 @@ const ResponseHttpFactory = require('../factory/ResponseHttpFactory')
 
 class PropertiesController {
   async store (req, res) {
-    const { body: requestBody, user: requestUser } = req
-    const requestUserPermissions = AuthenticationService.userPermissions(requestUser)
+    try {
+      const { body: requestBody, user: requestUser, files: requestFiles } = req
+      const requestUserPermissions = AuthenticationService.userPermissions(requestUser)
 
-    if (!requestUserPermissions.createOwn('home').granted) {
-      throw new AuthenticationException()
+      if (requestFiles.length < 1) {
+        throw new ValidationException.InvalidAmountOfImages()
+      }
+
+      if (!requestUserPermissions.createOwn('home').granted) {
+        throw new AuthenticationException()
+      }
+
+      const propertyFiles = requestFiles.reduce((prev, curr) => {
+        const fileObject = { file_name: curr.filename, original_name: curr.originalname }
+        prev.push(fileObject)
+        return prev
+      }, [])
+
+      const apartment = await Property.create({
+        ...requestBody,
+        owner_id: requestUser.id,
+        files: propertyFiles
+      }, {
+        include: ['files']
+      })
+
+      return ResponseHttpFactory.genericResponse(res, 201, 'Property Ad Created Successfully', apartment)
+    } catch (error) {
+      for (const file of req.files) {
+        await asyncRemoveFile(file.path)
+      }
+      throw error
     }
-
-    const apartment = await Property.create(requestBody)
-    return ResponseHttpFactory.genericResponse(res, 201, 'Property Ad Created Successfully', apartment)
   }
 
   async index (req, res) {
@@ -37,7 +66,8 @@ class PropertiesController {
       order: [
         ['in_promotion', 'ASC'],
         ['created_at', 'DESC']
-      ]
+      ],
+      include: ['files']
     })
 
     const propertiesResponse = { ...properties, docs: PropertyUtils.manageProperties(properties.docs) }

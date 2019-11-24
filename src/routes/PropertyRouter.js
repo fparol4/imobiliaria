@@ -11,13 +11,14 @@ const PropertyValidator = require('../app/validators/PropertyValidator')
 
 /** Middlewares */
 const AuthMiddleware = require('../app/middlewares/Auth')
+const FileMiddleware = require('../config/multer')
 
 router.get('', PropertyController.index)
 router.use('/:houseId/promotions', PromotionRouter)
 
 /** Authenticated */
 router.use(AuthMiddleware)
-router.post('', PropertyValidator('store'), PropertyController.store)
+router.post('', FileMiddleware.array('photo'), PropertyValidator('store'), PropertyController.store) //  PropertyValidator('store'),
 router.put('/:id', PropertyController.update)
 
 module.exports = router

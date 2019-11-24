@@ -22,13 +22,8 @@ module.exports = (sequelize, DataTypes) => {
 
   Property.associate = function (models) {
     Property.belongsTo(models.User, { foreignKey: 'owner_id', as: 'owner' })
+    Property.hasMany(models.File, { foreignKey: 'property_id', as: 'files' })
   }
-
-  // Immobile.paginate = function (page = 0, pageSize = 20) {
-  //   const offset = page * pageSize
-  //   const limit = offset + pageSize
-  //   return { offset, limit }
-  // }
 
   sequelizePaginate.paginate(Property)
   return Property

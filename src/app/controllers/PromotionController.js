@@ -5,8 +5,8 @@ const { Op } = require('sequelize')
 const { Property } = require('../models')
 
 /** Exceptions */
-const AuthenticationException = require('../exceptions/AuthenticationException')
-const PromotionException = require('../exceptions/PromotionException')
+const { AuthenticationException } = require('../exceptions/AuthenticationException')
+const { PromotionValueException, PromotionDateException } = require('../exceptions/PromotionException')
 
 /** Services */
 const AuthenticationService = require('../services/AuthenticationService')
@@ -23,11 +23,11 @@ class PromotionController {
     const property = await Property.findByPk(propertyId)
 
     if (property.value <= requestBody.promotion_value) {
-      throw new PromotionException.PromotionValueException()
+      throw new PromotionValueException()
     }
 
     if (Moment(requestBody.promotion_end).diff(new Date()) < 0) {
-      throw new PromotionException.PromotionDateException()
+      throw new PromotionDateException()
     }
 
     const promotionBody = { ...requestBody, in_promotion: true }
