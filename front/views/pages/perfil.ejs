@@ -12,18 +12,16 @@
 <body>
     <%- include('../components/navbar', { black: true }) %>
     <div class="container uk-margin-top">
-        <%- include('../components/datasheet') %>
-        <%- include('../components/slider-slideshow') %>
+        <%- include('../components/perfil-editor.ejs') %>
     </div>
     <%- include('../components/footer') %>
-    <%- include('../components/modal-contato') %>
 </body>
 <%- include('../_layout/imports/footer-imports'); %>
 <script src="./js/jquery.mask.min.js"></script>
 <script>
     $(document).ready(function () {
         var SPMaskBehavior = function (val) {
-            return val.replace(/\D/g, '').length === 11 ? '(00) 0 0000-0000' : '(00) 0000-00009';
+            return val.replace(/\D/g, '').length === 11 ? '(00) 00000-0000' : '(00) 0000-00009';
         },
             spOptions = {
                 onKeyPress: function (val, e, field, options) {

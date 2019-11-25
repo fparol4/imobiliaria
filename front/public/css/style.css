@@ -360,6 +360,7 @@ small.val-ant {
   font-style: italic;
   margin-right: 10px;
   margin-left: 10px;
+  vertical-align: super;
 }
 
 .type {
@@ -438,6 +439,19 @@ tr td, tr > th {
     height: 40px;
     vertical-align: middle;
     display: inline-block;
+}
+
+.uk-btn-mobile {
+      font-size: 9pt;
+    padding: 5px 20px;
+}
+.checkbox {
+    display: block;
+        margin: 15px auto;
+}
+
+.left {
+  margin-left: 30px;
 }
 
 @media (max-width: 442px) {

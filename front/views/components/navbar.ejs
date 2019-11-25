@@ -23,13 +23,37 @@
             </li>
         </ul>
     </div>
+
+
     <div class="uk-navbar-right uk-menu-no-responsive">
         <ul class="uk-navbar-nav">
-            <li><button id="administracao" data-href="/login" class="uk-button uk-button-primary uk-btn-round"><i
+
+            <% if(logged) { %>
+
+            <li> <a href="#"><strong>Menu Administrativo</strong></a>
+                <div class="uk-navbar-dropdown">
+                    <ul class="uk-nav uk-navbar-dropdown-nav">
+                        <li class="uk-padding-small"><a href="/dashboard">Dashboard</a></li>
+                        <% if(admin) { %> <li class="uk-padding-small"><a href="/propostas">Propostas</a></li> <% } %>
+                    </ul>
+                </div>
+            </li>
+
+            <%} %>
+            <li>
+                <% if(logged) { %>
+                <button id="perfil" data-href="/perfil" class="uk-button uk-button-primary uk-btn-round"><i
+                        class="material-icons icon-set-16">person</i>
+                    Perfil</button>
+                <% } else { %>
+                <button id="administracao" data-href="/login" class="uk-button uk-button-primary uk-btn-round"><i
                         class="material-icons icon-set-16">input</i>
-                    Administração</button></li>
+                    Administração</button>
+                <%}%>
+                </li>
         </ul>
     </div>
+
 
     <div class="uk-navbar-right uk-menu-responsive">
         <ul class="uk-navbar-nav">
@@ -49,8 +73,27 @@
                         </li>
                         <li class="hr-top">
                             <hr />
-                            <button class="uk-button uk-button-primary uk-btn-round" style="font-size: 8pt"><i
-                                    class="material-icons icon-set-16">input</i> Administração</button></li>
+                <% if(logged) { %>
+                <ul class="uk-navbar-nav">
+                    <li> <a href="#"><strong>Menu Administrativo</strong></a>
+                        <div class="uk-navbar-dropdown">
+                            <ul class="uk-nav uk-navbar-dropdown-nav">
+                                <li class="uk-padding-small"><a href="/dashboard">Dashboard</a></li>
+                                <% if(admin) { %> <li class="uk-padding-small"><a href="/propostas">Propostas</a></li>
+                                <% } %>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+                <button id="perfil" data-href="/perfil" class="uk-button uk-button-primary uk-btn-round uk-btn-mobile">
+                    <i class="material-icons icon-set-16">person</i> Pefil</button>
+                <% } else { %>
+                <button id="administracao" data-href="/login"
+                    class="uk-button uk-button-primary uk-btn-round uk-btn-mobile"><i
+                        class="material-icons icon-set-16">input</i> Administração</button>
+                <%}%>
+                                </li>
+                                    
                     </ul>
                 </div>
             </li>
