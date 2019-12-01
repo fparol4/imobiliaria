@@ -14,4 +14,12 @@ class InvalidAmountOfImages extends Error {
   }
 }
 
-module.exports = { PropertyImageExtensionNotAlowed, InvalidAmountOfImages }
+class CouldNotBeFound extends Error {
+  constructor (message = 'The required resource was not found') {
+    super(message)
+    this.name = 'RequestError'
+    this.status = 400
+  }
+}
+
+module.exports = { PropertyImageExtensionNotAlowed, InvalidAmountOfImages, CouldNotBeFound }

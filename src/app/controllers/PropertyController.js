@@ -22,39 +22,19 @@ const ResponseHttpFactory = require('../factory/ResponseHttpFactory')
 
 class PropertiesController {
   async store (req, res) {
-    try {
-      const { body: requestBody, user: requestUser, files: requestFiles } = req
-      const requestUserPermissions = AuthenticationService.userPermissions(requestUser)
+    const { body: requestBody, user: requestUser } = req
+    const requestUserPermissions = AuthenticationService.userPermissions(requestUser)
 
-      if (requestFiles.length < 1) {
-        throw new ValidationException.InvalidAmountOfImages()
-      }
-
-      if (!requestUserPermissions.createOwn('home').granted) {
-        throw new AuthenticationException()
-      }
-
-      const propertyFiles = requestFiles.reduce((prev, curr) => {
-        const fileObject = { file_name: curr.filename, original_name: curr.originalname }
-        prev.push(fileObject)
-        return prev
-      }, [])
-
-      const apartment = await Property.create({
-        ...requestBody,
-        owner_id: requestUser.id,
-        files: propertyFiles
-      }, {
-        include: ['files']
-      })
-
-      return ResponseHttpFactory.genericResponse(res, 201, 'Property Ad Created Successfully', apartment)
-    } catch (error) {
-      for (const file of req.files) {
-        await asyncRemoveFile(file.path)
-      }
-      throw error
+    if (!requestUserPermissions.createOwn('home').granted) {
+      throw new AuthenticationException()
     }
+
+    const apartment = await Property.create({
+      ...requestBody,
+      owner_id: requestUser.id
+    })
+
+    return ResponseHttpFactory.genericResponse(res, 201, 'Property Ad Created Successfully', apartment)
   }
 
   async index (req, res) {
@@ -82,6 +62,10 @@ class PropertiesController {
 
     const property = await Property.findByPk(propertyId)
 
+    if (!property) {
+      throw new ValidationException.CouldNotBeFound()
+    }
+
     if (property.owner_id === requestUser.id) {
       const filteredBody = requestUserPermissions.updateOwn('home').filter(requestBody)
       const updateProperty = await property.update(filteredBody)
@@ -95,6 +79,30 @@ class PropertiesController {
     const filteredBody = requestUserPermissions.updateAny('home').filter(requestBody)
     const updateProperty = await property.update(filteredBody)
     return ResponseHttpFactory.genericResponse(res, 200, 'Properties Listed Successfully', updateProperty)
+  }
+
+  async delete (req, res) {
+    const { user: requestUser } = req
+    const { id: propertyId } = req.params
+    const requestUserPermissions = AuthenticationService.userPermissions(requestUser)
+
+    const property = await Property.findByPk(propertyId)
+
+    if (!property) {
+      throw new ValidationException.CouldNotBeFound()
+    }
+
+    if (property.owner_id === requestUser.id) {
+      await property.destroy()
+      return ResponseHttpFactory.genericResponse(res, 200, 'Property deleted successfully')
+    }
+
+    if (!requestUserPermissions.deleteAny('home').granted) {
+      throw new AuthenticationException()
+    }
+
+    await property.destroy()
+    return ResponseHttpFactory.genericResponse(res, 200, 'Property deleted successfully')
   }
 }
 

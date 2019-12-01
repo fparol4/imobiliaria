@@ -14,6 +14,9 @@ AccessControl.grant('manager')
   // Crud Any:Home
   .updateAny('home', ['city', 'neighbourhood', 'value', 'in_promotion', 'promotion_value', 'promotion_end'])
   .deleteAny('home')
+  // Crud Any:PropertyFile
+  .updateAny('propertyFile')
+  .deleteAny('propertyFile')
 
 AccessControl.grant('admin')
   .extend('manager')

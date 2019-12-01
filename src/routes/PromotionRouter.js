@@ -9,10 +9,9 @@ const PromotionValidator = require('../app/validators/PromotionValidator')
 /** Middlewares */
 const AuthMiddleware = require('../app/middlewares/Auth')
 
-router.put('', PromotionController.update)
-
 /** Authenticated */
 router.use(AuthMiddleware)
+router.put('', PromotionController.update)
 router.post('', PromotionValidator('store'), PromotionController.store)
 
 module.exports = router
