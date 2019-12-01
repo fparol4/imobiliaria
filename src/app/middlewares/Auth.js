@@ -1,13 +1,16 @@
-const jwt = require('jsonwebtoken')
-const { promisify } = require('util')
+/** Services */
+const AuthenticationService = require('../services/AuthenticationService')
 
-/** Models */
-const { User } = require('../models')
+/** Exceptions */
+const { TokenNotProvidedException } = require('../exceptions/AuthenticationException')
 
 module.exports = async (req, res, next) => {
   const { authorization } = req.headers
-  const [, token] = authorization.split(' ')
-  const { id: userId } = await promisify(jwt.verify)(token, process.env.JWT_SECRET)
-  req.user = await User.findByPk(userId)
+
+  if (!authorization) {
+    throw new TokenNotProvidedException()
+  }
+
+  req.user = await AuthenticationService.authToken(authorization)
   next()
 }

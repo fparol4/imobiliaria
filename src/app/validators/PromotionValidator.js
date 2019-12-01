@@ -1,17 +1,14 @@
-const ResponseMessages = require('../../locale/validators')
 const Yup = require('yup')
 
 const validators = {
   store: Yup.object().shape({
-    email: Yup
-      .string()
-      .email(ResponseMessages.EmailFormatInvalid)
-      .required(ResponseMessages.EmailRequired),
+    promotion_value: Yup
+      .number()
+      .required(),
 
-    password: Yup
-      .string()
-      .required(ResponseMessages.PasswordRequired)
-
+    promotion_end: Yup
+      .date()
+      .required()
   })
 }
 
