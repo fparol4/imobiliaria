@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../_layout/imports/meta-tags'); %>
+    <%- include('../_layout/imports/header-imports'); %>
+    <link rel="stylesheet" href="./css/register.css">
+
+    <title>Imobiliária | Aliance</title>
+</head>
+
+<body>
+    <div class="uk-card uk-card-default purple col-md-10 offset-md-7 col-xs-20">
+        <div class="logo uk-card uk-card-default">
+            <img src="./images/logo.png" alt="logo">
+        </div>
+
+        <div class="uk-container uk-container-center">
+            <!-- <h3 class="uk-margin-top">Tab autoplayer</h3> -->
+            <ul uk-tab class="uk-child-width-expand" data-uk-tab="{connect:'#my-id', hash: true}">
+                <li>
+                    <a href="#cadastro">Quero me cadastrar</a>
+                </li>
+                <li class="<% if(!!login) { %> <%= 'uk-active' %> <% } %>">
+                    <a href="#login">Já tenho cadastro</a>
+                </li>
+            </ul>
+            <ul id="my-id" class="uk-switcher uk-margin">
+                <li>
+                    <%- include('../components/cadastro.ejs'); %>
+                </li>
+                <li>
+                    <%- include('../components/login.ejs'); %>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <%- include('../components/modal-termos.ejs'); %>
+</body>
+<%- include('../_layout/imports/footer-imports'); %>
+<script src="./js/jquery.mask.min.js"></script>
+<script>
+    $(document).ready(function () {
+        var SPMaskBehavior = function (val) {
+            return val.replace(/\D/g, '').length === 11 ? '(00) 0 0000-0000' : '(00) 0000-00009';
+        },
+            spOptions = {
+                onKeyPress: function (val, e, field, options) {
+                    field.mask(SPMaskBehavior.apply({}, arguments), options);
+                }
+            };
+
+        $('#telefone').mask(SPMaskBehavior, spOptions);
+    });
+</script>
+
+</html>

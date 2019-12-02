@@ -1,0 +1,6 @@
+{
+  "url": "https://api.openbrewerydb.org/breweries",
+  "language": {
+    "default": "pt-br"
+  }
+}

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../_layout/imports/meta-tags'); %>
+    <%- include('../_layout/imports/header-imports'); %>
+
+    <link rel="stylesheet" href="/css/informations.css">
+    <title>Imobiliária | Aliance</title>
+</head>
+
+<body>
+    <%- include('../components/navbar', { black: true }) %>
+    <div class="container uk-margin-top">
+        <%- include('../components/perfil-editor.ejs') %>
+    </div>
+    <%- include('../components/footer') %>
+</body>
+<%- include('../_layout/imports/footer-imports'); %>
+<script src="./js/jquery.mask.min.js"></script>
+<script>
+    $(document).ready(function () {
+        var SPMaskBehavior = function (val) {
+            return val.replace(/\D/g, '').length === 11 ? '(00) 00000-0000' : '(00) 0000-00009';
+        },
+            spOptions = {
+                onKeyPress: function (val, e, field, options) {
+                    field.mask(SPMaskBehavior.apply({}, arguments), options);
+                }
+            };
+
+        $('#telefone').mask(SPMaskBehavior, spOptions);
+    });
+</script>
+
+</html>

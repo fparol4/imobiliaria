@@ -1,0 +1,261 @@
+<div class="uk-card uk-card-default uk-card-body row">
+    <div class="col-md-24">
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="uk-card-title">Ficha Técnica</h3>
+            </div>
+            <div class="col-md-12 uk-flex-end">
+                <div class="uk-margin-right">
+                    <button class="uk-button uk-button-primary uk-button-success">SALVAR</button>
+                </div>
+                <div>
+                    <button class="uk-button uk-button-danger">CANCELAR</button>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div>
+                <%if(admin) {%>
+                <div class="row uk-margin-small-top">
+                    <label class="col-md-6 uk-text-center">Ativar promoção? <input class="uk-checkbox checkbox"
+                            type="checkbox"></label>
+                    <label class="col-md-6 left"> Data da Promoção: <input type='text' placeholder="00/00/0000"
+                            class='uk-input datepicker-here' disabled />
+                    </label>
+                </div>
+                <% } %>
+                <div class="ficha-tecnica">
+                    <div class="itens">
+                        <i class="material-icons">
+                            open_with
+                        </i>
+                        <strong>Área Útil</strong>
+                        <p>
+                            <input class="uk-input uk-width-1-2" type="text" name="metragem" id="metragem" required
+                                value="0">
+                            m<sup>2</sup>
+                        </p>
+                    </div>
+                    <div class="itens">
+                        <i class="material-icons">
+                            single_bed
+                        </i>
+                        <strong>Dormitórios</strong>
+                        <p>
+                            <input class="uk-input uk-width-2-3" type="text" name="dormitorios" id="dormitorios"
+                                required value="0">
+                        </p>
+                    </div>
+                    <div class="itens">
+                        <i class="material-icons">
+                            group
+                        </i>
+                        <strong>Sala</strong>
+                        <p>
+                            <input class="uk-input uk-width-2-3" type="text" name="sala" id="sala" required value="0">
+                        </p>
+                    </div>
+                    <div class="itens">
+                        <i class="material-icons">
+                            bathtub
+                        </i>
+                        <strong>Banheiros</strong>
+                        <p>
+                            <input class="uk-input uk-width-2-3" type="text" name="banheiros" id="banheiros" required
+                                value="0">
+                        </p>
+                    </div>
+
+                    <div class="itens">
+                        <i class="material-icons">
+                            directions_car
+                        </i>
+                        <strong>Garagem</strong>
+                        <p>
+                            <input class="uk-input uk-width-2-3" type="text" name="garagem" id="garagem" required
+                                value="0">
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="ficha-tecnica">
+
+                    <div class="itens select" required>
+                        <i class="material-icons">
+                            pets
+                        </i>
+                        <strong>Animais</strong>
+                        <p>
+                            <select class="uk-select" required>
+                                <option value="sim">Sim</option>
+                                <option value="nao">Não</option>
+                            </select>
+                        </p>
+                    </div>
+
+                    <div class="itens select" required>
+                        <i class="material-icons">
+                            insert_drive_file
+                        </i>
+                        <strong>Operação</strong>
+                        <p>
+                            <select class="uk-select" required>
+                                <option value="vender">Vender</option>
+                                <option value="alugar">Alugar</option>
+                            </select>
+                        </p>
+                    </div>
+
+                    <div class="itens select">
+                        <i class="material-icons">
+                            border_all
+                        </i>
+                        <strong>Finalidade</strong>
+                        <p>
+                            <select class="uk-select" required>
+                                <option value="residencial">Residencial</option>
+                                <option value="comercial">Comercial</option>
+                                <option value="misto">Misto</option>
+                            </select>
+                        </p>
+                    </div>
+
+                    <div class="itens select">
+                        <i class="material-icons">
+                            notes
+                        </i>
+                        <strong>Tipo</strong>
+                        <p>
+                            <select class="uk-select" required>
+                                <option value="casa">Casa</option>
+                                <option value="apartamento">Apartamento</option>
+                                <option value="comercial">Comercial</option>
+                                <option value="terreno">Terreno</option>
+                            </select>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-10 card-tecnica">
+                        <h3 class="col-md-12 "><em class="em-casa">Mensal</em></h3>
+                        <div class="uk-card-valores">
+                            <div class="itens">
+                                <div>
+                                    <strong>Codigo: </strong>
+                                </div>
+                                <p>
+                                    11JH4HG51O231OY41
+                                </p>
+                            </div>
+                            <div class="itens">
+                                <div>
+                                    <i class="material-icons">
+                                        favorite
+                                    </i>
+                                    <strong>Apelido: </strong>
+                                </div>
+                                <p>
+                                    <input class="uk-input uk-width-2-3" type="text" name="apelido" id="apelido"
+                                        required>
+                                </p>
+                            </div>
+                            <div class="itens">
+                                <div>
+                                    <i class="material-icons">
+                                        attach_money
+                                    </i>
+                                    <strong>Valor: </strong>
+                                </div>
+                                <p>
+                                    <input class="uk-input uk-width-2-3" type="text" data-affixes-stay="true" required
+                                        placeholder="R$ 0,00" data-prefix="R$ " data-thousands="." data-decimal=","
+                                        name="locacao" id="locacao">
+                                </p>
+                            </div>
+                            <div class="itens">
+                                <div>
+                                    <i class="material-icons">
+                                        monetization_on
+                                    </i>
+                                    <strong>IPTU: </strong>
+                                </div>
+                                <p>
+                                    <input class="uk-input uk-width-2-3" type="text" data-affixes-stay="true" required
+                                        placeholder="R$ 0,00" data-prefix="R$ " data-thousands="." data-decimal=","
+                                        name="iptu" id="iptu">
+                                </p>
+                            </div>
+                            <div class="itens">
+                                <div>
+                                    <i class="material-icons">
+                                        pool
+                                    </i>
+                                    <strong>Condominio: </strong>
+                                </div>
+                                <p>
+                                    <input class="uk-input uk-width-2-3" type="text" data-affixes-stay="true" required
+                                        placeholder="R$ 0,00" data-prefix="R$ " data-thousands="." data-decimal=","
+                                        name="condominio" id="condominio">
+                                </p>
+                            </div>
+                            <div class="itens">
+                                <div>
+                                    <i class="material-icons">
+                                        location_searching
+                                    </i>
+                                    <strong>Cep: </strong>
+                                </div>
+                                <p>
+                                    <input class="uk-input uk-width-2-3" type="text" data-mask="99999-999" name="cep"
+                                        required placeholder="00000-000" id="cep">
+
+                                </p>
+                            </div>
+                            <div class="itens">
+                                <div>
+                                    <i class="material-icons">
+                                        near_me
+                                    </i>
+                                    <strong>Cidade: </strong>
+                                </div>
+                                <p>
+                                    <input class="uk-input uk-width-2-3" type="text" name="cidade" disabled id="cidade">
+
+                                </p>
+                            </div>
+                            <div class="itens">
+                                <div>
+                                    <i class="material-icons">
+                                        room
+                                    </i>
+                                    <strong>Bairro: </strong>
+                                </div>
+                                <p>
+                                    <input class="uk-input uk-width-2-3" type="text" name="bairro" disabled id="bairro">
+                                </p>
+                            </div>
+
+                            <div class="tipo mg-top-5">
+                                <span class="uk-label uk-label-success uk-valor">
+                                    <label>
+                                        <input id="total-money" type="hidden" />
+                                        <h3 id="total">R$ 0,00</h3>
+                                    </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-14 texto card-tecnica">
+                        <h3><em class="em-casa">Histórico</em></h3>
+                        <div class="form-control quill-mg-t ">
+                            <%- include('../components/editor.ejs') %>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

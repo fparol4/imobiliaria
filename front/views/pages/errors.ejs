@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <%- include('../_layout/imports/meta-tags'); %>
+    <title><%= message %></title>
+    <%- include('../_layout/imports/header-imports.ejs') %>
+
+    <!-- Style Base -->
+    <style>
+        html,
+        body {
+            min-height: 100%;
+            height: 100%;
+            background-color: rgb(230, 230, 230, 0.95);
+        }
+
+        body>div.container,
+        body>div.bg {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            height: calc(100% - 82px);
+        }
+
+        body>div.bg {
+            background: center/45% url('/images/svg/alert-triangle.svg') no-repeat;
+            min-width: 300px;
+            position: absolute;
+            z-index: -1;
+            top: 0;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        body>div.bg::before {
+            content: '';
+            display: block;
+            height: 100%;
+            position: absolute;
+            width: 100%;
+            z-index: 1;
+        }
+
+        body>div.container>h1 {
+            font-size: 20vw;
+            margin: 0;
+        }
+
+        body>div.container>.message {
+            font-size: 2rem;
+            font-weight: 100;
+        }
+
+        body>div.container>pre {
+            max-width: 100%;
+        }
+
+        body>footer {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin: 15px 0px;
+            align-items: center;
+            font-size: 10pt;
+            text-align: center;
+        }
+
+        body>footer>span {
+
+            text-transform: uppercase;
+        }
+
+        body>footer>img {
+            margin: 0px 15px;
+            width: 70px;
+        }
+
+        @media (max-width: 768px) {
+            body>div.bg {
+                background-size: 350px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="title"><%= error.status %></h1>
+        <p class="message">
+            <%= message %>
+        </p>
+        <% if(error.stack) { %>
+        <pre>
+                <%= error.stack %>
+         </pre>
+        <% } %>
+    </div>
+    <div class="bg"></div>
+    <footer>
+        <span><strong>Imobiliária </strong> Aliance</span> <img src="/images/logo-w100.png" alt="Aliance imobiliária">
+        <i>Todos os direitos reservados</i>
+
+    </footer>
+</body>
+
+</html>

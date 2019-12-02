@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../_layout/imports/meta-tags'); %>
+    <%- include('../_layout/imports/header-imports'); %>
+    <%- include('../_layout/rules/validation-login.ejs'); %>
+    <link rel="stylesheet" href="./css/quill.snow.css">
+    <title>Imobiliária | Aliance</title>
+</head>
+
+<body>
+    <%- include('../components/navbar', { black: true }) %>
+    <div class="container uk-margin-top">
+        <%- include('../components/editor') %>
+    </div>
+    <%- include('../components/footer') %>
+    <%- include('../components/modal-contato') %>
+</body>
+<%- include('../_layout/imports/footer-imports'); %>
+<script src="./js/quill.min.js"></script>
+<script>
+</script>
+<script>
+    var quill = new Quill('#editor', {
+        theme: 'snow'
+    });
+</script>
+
+</html>
