@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const controller = require('../controllers');
+const loginController = require('../controllers/login');
 
 module.exports = app => {
 
@@ -18,7 +19,20 @@ module.exports = app => {
   });
 
   router.get('/login', async (req, res, next) => {
-    res.render('pages/register', { login: true, admin: false });
+    res.render('pages/register', { login: true, admin: false, status: 200 });
+  })
+  router.post('/login', async (req, res, next) => {
+  const response = await loginController.SendLogin(req.body.email, req.body.password);
+    if(response.status == 400){
+       return res.render('pages/register', {
+    login: true,
+    admin: false,
+      ...response
+    });
+    }
+
+    res.redirect("/");
+
   });
 
   router.get('/editor', async (req, res, next) => {

@@ -1,5 +1,5 @@
 {
-  "url": "https://api.openbrewerydb.org/breweries",
+  "url": "http://localhost:3001/api/v1",
   "language": {
     "default": "pt-br"
   }
