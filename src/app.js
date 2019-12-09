@@ -22,6 +22,10 @@ class App {
     this.app.use(express.json())
     this.app.use(express.urlencoded({ extended: false }))
     this.app.use(cors(path.resolve(__dirname, 'config', 'cors')))
+    const dir = path.join(__dirname, '..', 'tmp');
+    console.log(dir);
+    this.app.use(express.static(dir));
+
   }
 
   routes () {

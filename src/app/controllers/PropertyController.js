@@ -81,6 +81,31 @@ class PropertiesController {
     return ResponseHttpFactory.genericResponse(res, 200, 'Properties Listed Successfully', updateProperty)
   }
 
+    async show (req, res) {
+     const { id: propertyId } = req.params
+
+     //const property = await Property.findByPk(propertyId, include: ['files'])
+
+     const propertyDetails = await Property.findOne({
+         include: [
+             {
+                 model: File,
+                 as: 'files',
+                 attributes: ['id', 'file_name', 'created_at']
+             }
+         ],
+         where: {
+             Id: propertyId,
+         },
+         });
+
+    if (!propertyDetails) {
+      throw new ValidationException.CouldNotBeFound()
+    }
+
+    return ResponseHttpFactory.genericResponse(res, 200, 'Properties Listed Successfully', propertyDetails)
+  }
+
   async delete (req, res) {
     const { user: requestUser } = req
     const { id: propertyId } = req.params

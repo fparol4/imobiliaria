@@ -1,0 +1,54 @@
+<div class="col-lg-<%= total < 4 ? 12 : 6 %> col-md-12">
+  <div class="uk-card uk-card-default uk-card-small uk-card-body uk-card-hover  uk-margin-top">
+    <div class="padding-neg-20 image-simple">
+      <%if(docs.in_promotion) {%>
+      <span class="uk-label uk-label-success uk-front uk-promocao">
+        <label class="">
+          Promoção
+        </label><i class="material-icons">money_off</i></span>
+      <% } else { %>
+      <% } %>
+      <img src="<%= url %><%= docs.files[0].file_name %>" alt="Imagem da casa" aria-label="Imagem da casa">
+    </div>
+    <div class="uk-card-footer">
+      <h3 class="type">
+        <%= docs.operation %>
+      </h3>
+      <%if(docs.in_promotion) {%>
+      <div class="val-before">
+        <small>DE: </small><small class="val-ant valores_ant"><%= docs.value %></small>
+      </div>
+      <div class="val-after">
+        <small>POR: </small><span
+          class="uk-button uk-button-text uk-context valores_full"><%= docs.promotion_value %></span>
+      </div>
+      <% } else { %>
+      <div class="val-after mg-top-19">
+        <span href="#" class="uk-button uk-button-text uk-context  valores_full"><%= docs.value %></span>
+      </div>
+      <% } %>
+    </div>
+    <div class="uk-card-icons">
+      <div class="bed">
+        <div><i class="material-icons">king_bed</i></div>
+        <div><%= docs.dorms %></div>
+      </div>
+      <div class="bathtub">
+        <div><i class="material-icons">bathtub</i></div>
+        <div><%= docs.toilets %></div>
+      </div>
+      <div class="car">
+        <div><i class="material-icons">directions_car</i></div>
+        <div><%= docs.garages %></div>
+      </div>
+      <div class="animal">
+        <div><i class="material-icons">pets</i></div>
+        <div><%= docs.animals ? "Sim" : "Não" %></div>
+      </div>
+    </div>
+    <div class="mais">
+      <a href="/informacoes/<%= docs.id %>" aria-label="Botão de informações"
+        class="uk-button uk-button-link">INFORMAÇÕES</a>
+    </div>
+  </div>
+</div>

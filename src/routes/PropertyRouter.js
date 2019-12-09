@@ -18,6 +18,9 @@ const FileAuthMiddleware = require('../app/middlewares/FileAuthMiddleware')
 router.get('', PropertyController.index)
 router.use('/:houseId/promotions', PromotionRouter)
 
+router.get('/:houseId/files/:id', PropertyFilesController.show)
+router.get('/:id', PropertyController.show)
+
 /** Authenticated */
 router.use(AuthMiddleware)
 router.post('', PropertyValidator('store'), PropertyController.store) //  PropertyValidator('store'),
@@ -25,7 +28,6 @@ router.put('/:id', PropertyController.update)
 router.delete('/:id', PropertyController.delete)
 
 router.post('/:houseId/files', FileAuthMiddleware, FileMiddleware.array('photo'), PropertyFilesController.store)
-router.get('/:houseId/files/:id', FileAuthMiddleware, PropertyFilesController.show)
 router.delete('/:houseId/files/:id', FileAuthMiddleware, PropertyFilesController.delete)
 
 module.exports = router

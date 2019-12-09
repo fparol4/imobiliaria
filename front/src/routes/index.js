@@ -1,17 +1,32 @@
 var express = require('express');
 var router = express.Router();
-const controller = require('../controllers');
 const loginController = require('../controllers/login');
+const indexController = require('../controllers/index');
 
 module.exports = app => {
 
+  const urlBackImage = "http://localhost:3001/images/";
+
   /* GET home page. */
   router.get('/', async (req, res, next) => {
-    res.render('index', { logged: true, admin: true });
+    const response = await indexController.getHouses();
+    const data = [...response.data.docs.promotions, ...response.data.docs.new, ...response.data.docs.remaining ];
+        response.data.docs = data;
+        response.data.url_back = urlBackImage;
+
+        console.log(response.data);
+
+
+    res.render('index', { logged: true, admin: false, ...response });
   });
 
-  router.get('/informacoes', async (req, res, next) => {
-    res.render('pages/informations', { logged: false, admin: false });
+  router.get('/informacoes/:id', async (req, res, next) => {
+
+    const response = await indexController.getHouse(req.params.id);
+
+    console.log(response.data);
+
+    res.render('pages/informations', { logged: false, admin: false, url_back: urlBackImage, data: { ...response.data } });
   });
 
   router.get('/cadastro', async (req, res, next) => {
@@ -19,19 +34,21 @@ module.exports = app => {
   });
 
   router.get('/login', async (req, res, next) => {
-    res.render('pages/register', { login: true, admin: false, status: 200 });
+    res.render('pages/register', { login: true, admin: false, status: 200, error: false });
   })
   router.post('/login', async (req, res, next) => {
-  const response = await loginController.SendLogin(req.body.email, req.body.password);
-    if(response.status == 400){
-       return res.render('pages/register', {
-    login: true,
-    admin: false,
-      ...response
-    });
-    }
+    const response = await loginController.SendLogin(req.body.email, req.body.password);
 
-    res.redirect("/");
+    console.log(response);
+
+    if(!response.error)
+      return res.redirect("/");
+
+    return res.render('pages/register', {
+        login: true,
+        admin: false,
+          ...response
+    });
 
   });
 

@@ -30,19 +30,19 @@
   <%- include('./components/carousel') %>
   <div class="container uk-margin-large-top">
     <%- include('./components/card') %>
-    <div class="uk-margin-top">
-      <%- include('./components/card') %>
-    </div>
     <%- include('./components/pagination') %>
   </div>
   <%- include('./components/footer') %>
 </body>
 <%- include('./_layout/imports/footer-imports'); %>
 <script src="/js/jquery.maskMoney.min.js"></script>
+<script src="/js/jquery.mask.min.js"></script>
 <script>
   $(function () {
     $('#val-max').maskMoney();
     $('#val-min').maskMoney();
+    $('.valores_full').mask("R$ #.##0,00");
+    $('.valores_ant').mask("R$ #.##0,00");
   })
 </script>
 

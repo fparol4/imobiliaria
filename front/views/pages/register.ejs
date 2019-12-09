@@ -34,16 +34,13 @@
         </li>
       </ul>
     </div>
-
-    <div class="container">
-      <% if(status == 400 && message != "") { %>
-      <div>
-        TESTE <%= message %>
-      </div>
-
-      <% } %>
-    </div>
   </div>
+  <% if(error) { %>
+
+  <%- include('../_layout/messages/error.ejs',
+  { status: status, message: message, alert_type: alert_type, index_status: index_status })%>
+  <% } %>
+
   <%- include('../components/modal-termos.ejs'); %>
 </body>
 <%- include('../_layout/imports/footer-imports'); %>
