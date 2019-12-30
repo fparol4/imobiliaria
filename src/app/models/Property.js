@@ -17,7 +17,9 @@ module.exports = (sequelize, DataTypes) => {
     finality: DataTypes.STRING,
     promotion_value: DataTypes.FLOAT,
     promotion_end: DataTypes.DATE,
-    in_promotion: DataTypes.BOOLEAN
+    in_promotion: DataTypes.BOOLEAN,
+    code: DataTypes.STRING,
+    postal_code: DataTypes.STRING
   })
 
   Property.associate = function (models) {

@@ -1,56 +1,43 @@
 <div id="modal-contato" uk-modal>
-    <div class="uk-modal-dialog uk-modal-body">
-        <div>
-            <form action="">
-                <div class="uk-form-controls uk-margin">
-
-                    <p></p>
-                    <label class=" uk-margin-top-small uk-margin-bottom-small" for="">Digite um telefone que ligamos pra
-                        você:</label>
-                    <input type="text" id="telefone" placeholder="(00) 9 0000-0000" class="uk-input" required>
-                </div>
-
-                <div class="uk-form-controls uk-margin">
-                    <label class=" uk-margin-top-small uk-margin-bottom-small" for="">Digite o seu nome:</label>
-                    <input type="text" id="nome" class="uk-input" required>
-                </div>
-                <div class="uk-form-controls uk-margin">
-                    <button class="uk-button uk-button-secondary">Enviar</button>
-                </div>
-
-            </form>
-
-
-            <!-- <div class="uk-form-controls uk-margin">
-                <p>Use os contatos abaixo, informando o codigo do Imóvel e vamos negociar!
-                    <br>
-                    <strong>Telefone: </strong> <a href="tel:+551100000000">(11) 0000-0000</a>
-                    <br>
-                    <strong>WhatsApp: </strong> <a href="https://api.whatsapp.com/send?phone=55119999999999">(11)
-                        0000-0000</a>
-                    <br>
-                    <strong>email: </strong> <a href="mailto:name@email.com">name@email.com</a>
-
-                </p>
-            </div> -->
-
+  <div class="uk-modal-dialog uk-modal-body">
+    <div>
+      <form id="form-contato">
+        <input type="hidden" id="id" name="id" value="<%= id %>">
+        <input type="hidden" id="codigo" name="codigo" value="<%= code %>">
+        <div class="uk-form-controls uk-margin">
+          <p></p>
+          <label class=" uk-margin-top-small uk-margin-bottom-small" for="">Digite um telefone que ligamos pra
+            você:</label>
+          <input type="text" id="telefone" name="telefone" placeholder="(00) 9 0000-0000" class="uk-input" required>
         </div>
-        <div class="sucess uk-margin-large" style="display: none;">
-            <div style="font-weight: 100; text-align: center;">
-                <i style=" font-size: 90pt; color: var(--success);" class="material-icons">
-                    done
-                </i>
-            </div>
-            <h2 style="font-weight: 100; text-align: center;">Formulário enviado com Sucesso!</h2>
+        <div class="uk-form-controls uk-margin">
+          <label class=" uk-margin-top-small uk-margin-bottom-small" for="">Digite o seu nome:</label>
+          <input type="text" id="nome" name="nome" class="uk-input" required>
         </div>
-
-        <div class="error uk-margin-large" style="display: none;">
-            <div style="font-weight: 100; text-align: center;">
-                <i style=" font-size: 90pt; color: var(--danger);" class="material-icons">
-                    close
-                </i>
-            </div>
-            <h2 style="font-weight: 100; text-align: center;">Ouve um Erro ao enviar o Formulário!</h2>
+        <div class="uk-form-controls uk-margin">
+          <textarea name="descricao" class="uk-textarea" id="descricao" cols="30" rows="5"
+            placeholder="Caso tenha alguma dúvida, coloque aqui"></textarea>
         </div>
+        <div class="uk-form-controls uk-margin">
+          <button id="button-contact" class="uk-button uk-button-secondary">Enviar</button>
+        </div>
+      </form>
     </div>
+    <div class="sucess uk-margin-large" style="display: none;">
+      <div style="font-weight: 100; text-align: center;">
+        <i style=" font-size: 90pt; color: var(--success);" class="material-icons">
+          done
+        </i>
+      </div>
+      <h2 style="font-weight: 100; text-align: center;">Formulário enviado com Sucesso!</h2>
+    </div>
+    <div class="error uk-margin-large" style="display: none;">
+      <div style="font-weight: 100; text-align: center;">
+        <i style=" font-size: 90pt; color: var(--danger);" class="material-icons">
+          close
+        </i>
+      </div>
+      <h2 style="font-weight: 100; text-align: center;">Ouve um Erro ao enviar o Formulário!</h2>
+    </div>
+  </div>
 </div>

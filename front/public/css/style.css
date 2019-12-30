@@ -392,7 +392,7 @@ small.val-ant {
 }
 
 .itens.select {
-      margin: 0px 35px;
+  margin: 0px 35px;
 }
 
 .uk-button-success {
@@ -400,19 +400,21 @@ small.val-ant {
   color: #fff;
 }
 
-.uk-button-success.uk-active, .uk-button-success:active {
-    background-color: #155825;
-    color: #fff;
+.uk-button-success.uk-active,
+.uk-button-success:active {
+  background-color: #155825;
+  color: #fff;
 }
 
-.uk-button-success:focus, .uk-button-success:hover {
+.uk-button-success:focus,
+.uk-button-success:hover {
   background-color: #2a9443;
-    color: #fff;
+  color: #fff;
 }
 
 td > .uk-button > i.material-icons {
-      vertical-align: sub;
-    font-size: 15pt;
+  vertical-align: sub;
+  font-size: 15pt;
 }
 
 td > .uk-button {
@@ -421,33 +423,32 @@ td > .uk-button {
   max-width: auto;
 }
 
-tr td, tr > th {
-    white-space: nowrap;
+tr td,
+tr > th {
+  white-space: nowrap;
 }
 
-
-.dataTables_filter > label > input[type='search'],
-.dataTables_length > label > select
-{
-    border: 0 none;
-    padding: 0 10px;
-    background: #fff;
-    color: #666;
-    border: 1px solid #e5e5e5;
-    transition: .2s ease-in-out;
-    transition-property: color,background-color,border;
-    height: 40px;
-    vertical-align: middle;
-    display: inline-block;
+.dataTables_filter > label > input[type="search"],
+.dataTables_length > label > select {
+  border: 0 none;
+  padding: 0 10px;
+  background: #fff;
+  color: #666;
+  border: 1px solid #e5e5e5;
+  transition: 0.2s ease-in-out;
+  transition-property: color, background-color, border;
+  height: 40px;
+  vertical-align: middle;
+  display: inline-block;
 }
 
 .uk-btn-mobile {
-      font-size: 9pt;
-    padding: 5px 20px;
+  font-size: 9pt;
+  padding: 5px 20px;
 }
 .checkbox {
-    display: block;
-        margin: 15px auto;
+  display: block;
+  margin: 15px auto;
 }
 
 .left {
@@ -462,6 +463,14 @@ tr td, tr > th {
 .image-simple img {
   height: 150px;
   width: 100%;
+}
+
+.informations {
+  position: fixed;
+  z-index: 9999999999999999;
+  bottom: 10px;
+  right: 20px;
+  display: none;
 }
 
 @media (max-width: 442px) {

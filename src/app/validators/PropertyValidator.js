@@ -16,13 +16,11 @@ const validators = {
 
     dorms: Yup
       .number()
-      .positive()
       .integer()
       .required(),
 
     toilets: Yup
       .number()
-      .positive()
       .integer()
       .required(),
 
@@ -61,13 +59,21 @@ const validators = {
 
     garages: Yup
       .number()
-      .positive()
       .integer()
       .required(),
 
     promotion_value: Yup
       .number()
       .positive(),
+
+    postal_code: Yup
+    .string()
+    .required(),
+
+        code: Yup
+    .string()
+    .required(),
+
 
     promotion_date: Yup
       .date(),

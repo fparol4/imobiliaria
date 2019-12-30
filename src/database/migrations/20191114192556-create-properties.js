@@ -1,5 +1,8 @@
 'use strict'
 
+const uuid = require('uuid/v1');
+
+
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable('properties', {
@@ -108,6 +111,14 @@ module.exports = {
       updated_at: {
         allowNull: false,
         type: Sequelize.DATE
+      },
+        code: {
+        allowNull: false,
+        type: Sequelize.STRING
+      },
+        postal_code: {
+        allowNull: false,
+        type: Sequelize.STRING
       }
 
     })

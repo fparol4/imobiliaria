@@ -1,48 +1,41 @@
-const path = require('path')
-require(path.resolve(__dirname, '..', 'env'))
+const path = require("path");
+require(path.resolve(__dirname, "..", "env"));
 
 /** Dependencies */
-const express = require('express')
-const cors = require('cors')
-const compression = require('compression')
-const helmet = require('helmet')
-require('express-async-errors')
+const express = require("express");
+const cors = require("cors");
+const compression = require("compression");
+const helmet = require("helmet");
+require("express-async-errors");
 
 class App {
   constructor() {
-    this.app = express()
-    this.middlewares()
-    this.routes()
-    this.handlers()
+    this.app = express();
+    this.middlewares();
+    this.routes();
+    this.handlers();
   }
 
-  middlewares () {
-    this.app.use(helmet())
-    this.app.use(compression())
-    this.app.use(express.json())
-    this.app.use(express.urlencoded({ extended: false }))
-    this.app.use(cors(path.resolve(__dirname, 'config', 'cors')))
-    const dir = path.join(__dirname, '..', 'tmp');
+  middlewares() {
+    this.app.use(helmet());
+    this.app.use(compression());
+    this.app.use(express.json());
+    this.app.use(express.urlencoded({ extended: false }));
+    this.app.use(cors(path.resolve(__dirname, "config", "cors")));
+    const dir = path.join(__dirname, "..", "tmp");
     console.log(dir);
     this.app.use(express.static(dir));
-
   }
 
-  routes () {
-    this.app.use(`${process.env.API_VERSION}`, require('./routes'))
+  routes() {
+    this.app.use(`${process.env.API_VERSION}`, require("./routes"));
   }
 
-  handlers () {
+  handlers() {
     this.app.use(
-      require(
-        path.resolve(
-          'src',
-          'app',
-          'middlewares',
-          'ExceptionHandler'
-        ))
-    )
+      require(path.resolve("src", "app", "middlewares", "ExceptionHandler"))
+    );
   }
 }
 
-module.exports = new App().app
+module.exports = new App().app;

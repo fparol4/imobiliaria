@@ -16,7 +16,8 @@
     <%- include('../components/slider-slideshow', {id: data.id, files: data.files, url: url_back }) %>
   </div>
   <%- include('../components/footer') %>
-  <%- include('../components/modal-contato') %>
+  <%- include('../components/modal-contato', {id: data.id, code: data.code }) %>
+  <div class="informations"></div>
 </body>
 <%- include('../_layout/imports/footer-imports'); %>
 <script src="../js/jquery.mask.min.js"></script>
@@ -32,6 +33,60 @@
       };
 
     $('#telefone').mask(SPMaskBehavior, spOptions);
+    $("#form-contato").submit((e) => {
+      e.preventDefault();
+      let nome = $('#nome').val();
+      let telefone = $('#telefone').val();
+      let descricao = $('#descricao').val();
+      let id = $('#id').val();
+      let codigo = $('#codigo').val();
+
+      $("#button-contact").text("Enviando...").attr('disabled', true);
+
+
+      $.post('/cad-infos', {
+        id, nome, telefone, descricao, codigo
+      }, (data) => {
+        $('.informations').html(`
+          <div class="uk-alert-success" uk-alert>
+            <a class="uk-alert-close" uk-close></a>
+            <p style="margin-right: 10px;">Dados Enviados com Sucesso!</p>
+          </div>
+        `);
+
+        $('.informations').fadeIn();
+        setTimeout(() => {
+          $('.informations').fadeOut(() => {
+            $('.informations').html(``);
+          });
+        }, 4000)
+
+        $("#button-contact").text("Enviar").removeAttr('disabled');
+
+        $('#nome').val('');
+        $('#telefone').val('');
+        $('#descricao').val('');
+        UIkit.modal(document.querySelector('#modal-contato')).hide();
+
+      }).fail((xhr, status, error) => {
+
+        $('.informations').html(`
+          <div class="uk-alert-danger" uk-alert>
+            <a class="uk-alert-close" uk-close></a>
+            <p style="margin-right: 10px;">Ops Ouve um erro ao enviar os dados!</p>
+          </div>
+        `);
+
+        $('.informations').fadeIn();
+        setTimeout(() => {
+          $('.informations').fadeOut(() => {
+            $('.informations').html(``);
+          });
+        }, 4000)
+
+        $("#button-contact").text("Enviar").removeAttr('disabled');
+      })
+    })
   });
 </script>
 
