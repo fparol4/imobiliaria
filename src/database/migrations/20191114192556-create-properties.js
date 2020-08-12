@@ -46,17 +46,17 @@ module.exports = {
 
       value: {
         allowNull: false,
-        type: Sequelize.FLOAT
+        type: Sequelize.DOUBLE
       },
 
       iptu: {
         allowNull: false,
-        type: Sequelize.FLOAT
+        type: Sequelize.DOUBLE
       },
 
       condominium: {
         allowNull: false,
-        type: Sequelize.FLOAT,
+        type: Sequelize.DOUBLE,
         defaultValue: 0
       },
 
@@ -84,7 +84,10 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING
       },
-
+      type: {
+        allowNull: false,
+        type: Sequelize.STRING
+      },
       garages: {
         allowNull: false,
         type: Sequelize.INTEGER,
@@ -92,7 +95,7 @@ module.exports = {
       },
 
       promotion_value: {
-        type: Sequelize.FLOAT
+        type: Sequelize.DOUBLE
       },
 
       promotion_end: {

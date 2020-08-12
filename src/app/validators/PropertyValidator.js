@@ -70,6 +70,10 @@ const validators = {
     .string()
     .required(),
 
+    type: Yup
+    .string()
+    .required(),
+
         code: Yup
     .string()
     .required(),

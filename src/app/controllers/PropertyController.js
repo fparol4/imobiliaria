@@ -23,6 +23,7 @@ const ResponseHttpFactory = require('../factory/ResponseHttpFactory')
 class PropertiesController {
   async store (req, res) {
     const { body: requestBody, user: requestUser } = req
+
     const requestUserPermissions = AuthenticationService.userPermissions(requestUser)
 
     if (!requestUserPermissions.createOwn('home').granted) {
