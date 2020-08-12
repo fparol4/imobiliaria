@@ -12,11 +12,15 @@ module.exports = app => {
   router.get("/", async (req, res, next) => {
     await storage.init();
     const response = await indexController.getHouses();
-    const data = [
-      ...response.data.docs.promotions,
-      ...response.data.docs.new,
-      ...response.data.docs.remaining
-    ];
+    console.log(response)
+    let data = [];
+    if (response.data !== undefined)
+      data = [
+        ...response.data.docs.promotions,
+        ...response.data.docs.new,
+        ...response.data.docs.remaining
+      ];
+
     let token = {};
     if (await storage.getItem("token")) {
       token = {

@@ -102,16 +102,6 @@ module.exports = {
       in_promotion: {
         type: Sequelize.BOOLEAN
       },
-
-      created_at: {
-        allowNull: false,
-        type: Sequelize.DATE
-      },
-
-      updated_at: {
-        allowNull: false,
-        type: Sequelize.DATE
-      },
         code: {
         allowNull: false,
         type: Sequelize.STRING
@@ -119,7 +109,16 @@ module.exports = {
         postal_code: {
         allowNull: false,
         type: Sequelize.STRING
-      }
+      },
+      created_at: {
+        allowNull: false,
+        type: Sequelize.DATE
+      },
+
+      updated_at: {
+        allowNull: true,
+        type: Sequelize.DATE
+      },
 
     })
   },
